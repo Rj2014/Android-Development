@@ -1,0 +1,30 @@
+package com.example.imageswitcher;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    public void convertMoney(View view){
+        Log.i("Info", "Button pressed!");
+        EditText editText2 = (EditText) findViewById(R.id.editText2);
+        Log.i("Info", editText2.getText().toString());
+        String amountInDollar = editText2.getText().toString();
+        double amountInDollarDouble = Double.parseDouble(amountInDollar);
+        double amountInRupeeDouble = amountInDollarDouble * 71.06;
+        String amountInRupeeString = String.format("%.2f", amountInRupeeDouble);
+        Toast.makeText(this, "$" + amountInDollar + " is " + amountInRupeeString + " Indian Rupee ", Toast.LENGTH_LONG).show();
+
+
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+}
