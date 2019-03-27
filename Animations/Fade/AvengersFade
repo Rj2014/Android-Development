@@ -1,0 +1,60 @@
+
+package com.example.avengersendgamefading;
+
+import android.media.Image;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+
+public class MainActivity extends AppCompatActivity {
+    boolean ironIsShowing=true;
+    boolean capamIsShowing=true;
+    boolean thorIsShowing=true;
+
+
+    public void fade(View view){
+        ImageView ironImageView=(ImageView) findViewById(R.id.ironImageView);
+        ImageView capamImageView=(ImageView) findViewById(R.id.capamImageView);
+        ImageView thorImageView=(ImageView) findViewById(R.id.thorImageView);
+        if(ironIsShowing)
+        {
+            ironIsShowing=false;
+            ironImageView.animate().alpha(0).setDuration(2000);
+            capamImageView.animate().alpha(1).setDuration(2000);
+        }else if(capamIsShowing)
+        {
+            capamIsShowing=false;
+            capamImageView.animate().alpha(0).setDuration(2000);
+            thorImageView.animate().alpha(1).setDuration(2000);
+        }else if(thorIsShowing)
+            {
+            thorIsShowing=false;
+            thorImageView.animate().alpha(0).setDuration(2000);
+            ironImageView.animate().alpha(1).setDuration(2000);
+            }
+            else if(!ironIsShowing)
+        {
+            ironIsShowing=true;
+            ironImageView.animate().alpha(1).setDuration(2000);
+            capamImageView.animate().alpha(0).setDuration(2000);
+        }else if(!capamIsShowing)
+        {
+            capamIsShowing=true;
+            capamImageView.animate().alpha(1).setDuration(2000);
+            thorImageView.animate().alpha(0).setDuration(2000);
+        }else
+        {
+            thorIsShowing=true;
+            thorImageView.animate().alpha(1).setDuration(2000);
+            ironImageView.animate().alpha(0).setDuration(2000);
+        }
+
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+}
