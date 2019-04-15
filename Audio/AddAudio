@@ -1,9 +1,9 @@
 MediaPlayer mediaPlayer; //making mediaPlayer global so declaring it in public class MainActivity
-    public void play(View view){
+    public void play(View view){ //button to play the sound
         mediaPlayer.start();
 
     }
-    public void puause(View view){
+    public void puause(View view){ //button to pause the sound
         mediaPlayer.pause();
 
     }
