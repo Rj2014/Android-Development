@@ -1,0 +1,21 @@
+MediaPlayer mediaPlayer; //making mediaPlayer global so declaring it in public class MainActivity
+    public void play(View view){
+        mediaPlayer.start();
+
+    }
+    public void puause(View view){
+        mediaPlayer.pause();
+
+    }
+}
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        //the below code is added in onCreate method so that audio doesn't crash as it might get pause before play if not put inside it
+        mediaPlayer=MediaPlayer.create(this, R.raw.marbles));//marbles is the audio file name 
+
+
+    }
+}
