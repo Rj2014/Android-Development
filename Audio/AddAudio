@@ -19,3 +19,57 @@ MediaPlayer mediaPlayer; //making mediaPlayer global so declaring it in public c
 
     }
 }
+
+//adding audio seek bar to control the play, or to show the status/position of music
+//onCreate Method
+ audioManager=(AudioManager) getSystemService(AUDIO_SERVICE);
+        int currentVolume=audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+        int maxVolume=audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC
+        )
+        SeekBar volumeControl=(SeekBar) findViewById(R.id.volumeSeekBar);
+        volumeControl.setMax(maxVolume);// set maximum volume
+        volumeControl.setProgress(currentVolume); //to show the current volume
+        volumeControl.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,i,flags:0);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        SeekBar scrubSeekBar=(SeekBar) findViewById(R.id.scrubSeekBar);
+        scrubSeekBar.setMax(mediaPlayer.getDuration());
+        scrubSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                mediaPlayer.seekTo(i);// to change the position of sound using seek baar by dragging.
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        new Timer().scheduleAtFixedRate(new TimerTask(){
+            @Override
+            public void run(){
+                scrubSeekBar.setProgress(mediaPlayer.getCurrentPosition());
+
+            }
+        },delay 0, period 1000); // running at a period of 1000s with 0 delay, you can change the value as per your choice.
+
+    }
+}
