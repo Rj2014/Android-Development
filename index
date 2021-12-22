@@ -109,3 +109,42 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");} @*this script is used for jquery validation at the client side*@
 }
+
+
+@model WebApplication3.Models.Account
+
+
+<h4>Account Details SignIn Form</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="SignIn">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="AccountID" /> @*For update operation we need a hiddent field for this employee id property*@
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="submit" value="SignIn" class="btn btn-primary btn-block" />
+                </div>
+              
+            </div>
+            
+            
+
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");} @*this script is used for jquery validation at the client side*@
+}
